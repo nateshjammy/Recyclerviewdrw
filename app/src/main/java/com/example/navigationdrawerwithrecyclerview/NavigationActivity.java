@@ -9,6 +9,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -26,16 +27,20 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 
+import static android.drm.DrmStore.Playback.START;
 import static android.view.Gravity.RIGHT;
+import static android.view.Gravity.LEFT;
 
 
-/*
-* Link - https://androideverywhere.000webhostapp.com/
-* By - dnitinverma
-* */
+
 
 public class NavigationActivity extends AppCompatActivity {
 
+
+   //gitcode
+    //https://github.com/dnitinverma/Recyclerview-In-Navigation-Drawer
+
+    
     DrawerLayout drawer;
 
     @BindView(R.id.toolbar) Toolbar toolbar;
@@ -43,6 +48,7 @@ public class NavigationActivity extends AppCompatActivity {
     @BindView(R.id.toolbar_tvTitle) TextView tvTitle;
 
     @OnClick(R.id.toolbar_ivNavigation) void onClickNavigation() {
+
         openCloseDrawer();
     }
 
@@ -70,11 +76,10 @@ public class NavigationActivity extends AppCompatActivity {
         replaceNavigationFragment();
     }
 
-    @SuppressLint("RtlHardcoded")
     @Override
     public void onBackPressed() {
-        if (drawer.isDrawerOpen(RIGHT)) {
-            drawer.closeDrawer(RIGHT);
+        if (drawer.isDrawerOpen(LEFT)) {
+            drawer.closeDrawer(LEFT);
         }
         else {
             super.onBackPressed();
@@ -82,9 +87,19 @@ public class NavigationActivity extends AppCompatActivity {
     }
 
     private void openCloseDrawer() {
-        if (drawer.isDrawerOpen(RIGHT)) drawer.closeDrawer(RIGHT);
-        else drawer.openDrawer(RIGHT);
+//        if (drawer.isDrawerOpen(RIGHT)) drawer.closeDrawer(RIGHT);
+//        else drawer.openDrawer(RIGHT);
+
+        if (drawer.isDrawerOpen(Gravity.LEFT)) {
+            drawer.closeDrawer(Gravity.LEFT);
+        }
+        else {
+            drawer.openDrawer(Gravity.LEFT);
+        }
+
+       // return false;
     }
+
 
     public void replaceNavigationFragment() {
         getSupportFragmentManager()
@@ -142,7 +157,7 @@ public class NavigationActivity extends AppCompatActivity {
     }
 
     public void closeNavigationDrawer() {
-        if (drawer.isDrawerOpen(RIGHT)) drawer.closeDrawer(RIGHT);
+        if (drawer.isDrawerOpen(LEFT)) drawer.closeDrawer(LEFT);
     }
 
     @Override
@@ -150,4 +165,6 @@ public class NavigationActivity extends AppCompatActivity {
         super.onDestroy();
         unbinder.unbind();
     }
+
+
 }

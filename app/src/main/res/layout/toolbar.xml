@@ -32,12 +32,11 @@
             android:id="@+id/toolbar_ivNavigation"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            app:srcCompat="@drawable/ic_subject_black_24dp"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:padding="10dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
             android:background="@drawable/selector_view"
-            />
+            android:padding="10dp"
+            app:srcCompat="@drawable/ic_subject_black_24dp" />
 
     </RelativeLayout>
 
